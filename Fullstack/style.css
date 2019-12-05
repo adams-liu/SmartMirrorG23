@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: white;
+  font-family: Raleway;
+}
+
+body {
+  background: black;
+}
+
+#clockAndCalendarDiv {
+  float: left;
+  text-align: left;
+  padding: 20px;
+}
+
+#clockAndCalendarDiv h1 {
+  font-size:40px;
+}
+
+
+#calendarTable {
+  text-align: left;
+}
+
+#calendarTable td {
+  font-size: 12px;
+  height: 20px;
+}
+
+#calendarTable td:nth-child(odd){
+  font-weight:800;
+  width: 100px;
+}
+
+#calendarTable td:nth-child(even){
+  font-weight:100;
+  text-align: right
+}
+
+#calendarTable:before {
+	position: absolute;
+	height: 8em;
+	width: 100%;
+    content: "";
+	left:0;
+    background: linear-gradient(transparent, black);
+}
+
+#weatherDiv {
+  float: right;
+  text-align: right;
+  padding: 20px;
+}
+
+#weatherDiv h1 {
+  font-size:40px;
+}
+
+#forecastTable {
+  text-algin: left;
+}
+
+#forecastTable td {
+  font-size: 12px;
+  width: 60px;
+  height: 20px;
+}
+
+#forecastTable td:nth-child(even){
+  font-weight:800;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}

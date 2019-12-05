@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+
+</head>
+<body>
+<div id="clockAndCalendarDiv">
+  <p><span id="date"></span></p>
+<script>
+var date = new Date();
+document.getElementById("date").innerHTML = date.toLocaleDateString();
+</script>
+
+  <h1><span id="time"></span></h1>
+
+<script>
+var time = new Date();
+document.getElementById("time").innerHTML = time.toLocaleTimeString();
+</script>
+
+  <p>​</p>
+  <h5>Calendar</h5>
+  <table id="calendarTable">
+  <tr>
+    <td>Mom's Birthday</td>
+    <td>in 2 days</td>
+  </tr>
+  <tr>
+    <td>CMPE 365 Test</td>
+    <td>in 5 days</td>
+  </tr>
+  <tr>
+    <td>Christmas</td>
+    <td>in 26 days</td>
+  </tr>
+  <tr>
+    <td>Boxing Day</td>
+    <td>in 27 days</td>
+  </tr>
+  <tr>
+    <td>Anniversary </td>
+    <td>in 28 days</td>
+  </tr>
+  <tr>
+    <td>New Years Eve</td>
+    <td>in 1 month</td>
+  </tr>
+</table>
+</div>
+ 
+<div id="weatherDiv">
+  <p>​</p>
+  <h1>-18.5°C</h1>
+  <p>​</p>
+  <h5>Weather Forecast</h5>
+  <table id="forecastTable">
+  <tr>
+    <td>Mon</td>
+    <td>2.1°C</td>
+    <td>-8.0°C</td>
+  </tr>
+  <tr>
+    <td>Tue</td>
+    <td>3.3°C</td>
+    <td>-1.1°C</td>
+  </tr>
+  <tr>
+    <td>Wed</td>
+    <td>-1.8°C</td>
+    <td>-8.5°C</td>
+  </tr>
+  <tr>
+    <td>Thu</td>
+    <td>-4.2°C</td>
+    <td>-5.2°C</td>
+  </tr>
+  <tr>
+    <td>Fri</td>
+    <td>-8.9°C</td>
+    <td>-10.5°C</td>
+  </tr>
+  <tr>
+    <td>Sat</td>
+    <td>-14.5°C</td>
+    <td>-29.0°C</td>
+  </tr>
+</table>
+</div>
+  
+ <div id="footer">
+  <h1>Hey, sexy!</h1>
+  <p>​</p>
+  <p>​</p>
+  <h6>New York Times, 5 hours ago:</h6>
+  <h5>Trump signs bill backing Hong Kong protesters into law, in spite of Beijing's objections</h5>
+</div>
+
+</body>
+</html>
