@@ -1,0 +1,63 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "magic mirror",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "OpenCalendarIntent",
+                    "slots": [],
+                    "samples": [
+                        "open my calendar"
+                    ]
+                },
+                {
+                    "name": "OpenSpotifyIntent",
+                    "slots": [],
+                    "samples": [
+                        "open spotify"
+                    ]
+                },
+                {
+                    "name": "SetATimerIntent",
+                    "slots": [
+                        {
+                            "name": "time",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "set a timer for {time} minutes"
+                    ]
+                },
+                {
+                    "name": "OpenWeatherIntent",
+                    "slots": [],
+                    "samples": [
+                        "What's the weather like today"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
