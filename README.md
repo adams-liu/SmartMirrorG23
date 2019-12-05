@@ -1,6 +1,6 @@
 # Smart Mirror Project
 
-This project uses an amazon echo to communicate with the Raspberry Pi to create a hands-free experience for the user
+This project uses an amazon echo to communicate with the Raspberry Pi to create a hands-free media experience for the user
 
 
 # Directory Folders
