@@ -8,6 +8,7 @@
 
 import logging
 import sys
+import os
 
 from agt import AlexaGadget
 
@@ -47,13 +48,14 @@ class KitchenSinkGadget(AlexaGadget):
 
         To get the specific state update name, the following code snippet can be used:
         # Extract first available state (name & value) from directive payload
+        """
         if len(directive.payload.states) > 0:
             state = directive.payload.states[0]
             name = state.name
             value = state.value
             print('state name:{}, state value:{}'.format(name, value))
 
-        """
+        
         pass
 
     def on_notifications_setindicator(self, directive):
@@ -109,6 +111,7 @@ class KitchenSinkGadget(AlexaGadget):
 
         :param directive: Protocol Buffer Message that was send by Echo device.
         """
+        print("gay")
         pass
 
     def on_alerts_deletealert(self, directive):
