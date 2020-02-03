@@ -31,6 +31,11 @@ var config = {
 			     // true, force serveronly mode, because you want to.. no UI on this device
 
 
+
+
+
+
+
 	modules: [
 		{
 			module: "alert",
@@ -81,21 +86,22 @@ var config = {
 },
 
 
-
+/*
 		{
 			module: "compliments",
 			position: "lower_third"
 		},
+*/
 
 
-
-
+// Current Weather
 
 		{
 			module: "currentweather",
 			position: "top_right",
 			config: {
-				
+				location: "Kingston,ON",
+				useLocationAsHeader: true,
 				locationID: "5992500",  //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
 				appid: "4f50bb3a259ec2351894cc2d53ac1719"
 				
@@ -106,7 +112,7 @@ var config = {
 	
 		{
 			module: "newsfeed",
-			position: "bottom_bar",
+			position: "lower_third",
 			config: {
 				feeds: [
 					{
@@ -119,8 +125,59 @@ var config = {
 				broadcastNewsFeeds: true,
 				broadcastNewsUpdates: true
 			}
-		}
+		},
 		
+/// Alexa Control	
+   {
+        module: 'MMM-AlexaControl',
+        position: 'middle_center',
+        config:{
+        		pages:3,
+            image: false,
+            pm2ProcessName: "mm",
+            vcgencmd: true
+        }
+    },	
+	
+	
+// Page indicator
+	
+	 {
+        module: 'MMM-page-indicator',
+        position: 'bottom_bar',
+       
+        config: {
+            //pages: 3,
+        }
+    }	,
+ 
+     
+// Change pages module 
+    {
+        module: 'MMM-pages',
+        config: {
+        		 
+        		 modules:[[ "weatherforecast", "newsfeed"],[ "calendar", "MMM-NowPlayingOnSpotify" ]],
+             fixed: ["clock", "currentweather", "MMM-page-indicator"],
+        			 
+        		 devices: {
+    						devices: [{
+    							
+        					name: 'Page 2',  
+        					port: 11102,              
+        					handler: `_this.sendSocketNotification("PAGE_CHANGED", 1)`
+    						}, 
+    						
+    						{
+        					name: 'Page 3',  
+        					port: 11103,              
+        					handler: `_this.sendSocketNotification("PAGE_CHANGED", 2)`
+    						}	  
+							]}
+        			         			 
+        			 }
+            			 
+    }
 	
 	]
 
