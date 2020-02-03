@@ -127,12 +127,143 @@ var config = {
 			}
 		},
 		
+		
+		
+// Traffic Module 
+{
+  module: 'MMM-MyCommute',
+  position: 'bottom_left',
+  config: {
+    apikey: 'AIzaSyA2Il2EVnMDXVZOqtCgMFDgkEEnA23uE6U',
+    origin: '45 Union St W, Kingston, ON',
+    startTime: '00:00',
+    endTime: '23:59',
+    hideDays: [],
+    destinations: [
+      {
+        destination: '14 Duncan St Toronto, ON M5H 3G8',
+        label: 'Air Canada Centre',
+        mode: 'walking',
+        color: '#82E5AA'
+      },
+      {
+        destination: '317 Dundas St W, Toronto, ON M5T 1G4',
+        label: 'Art Gallery of Ontario',
+        mode: 'transit'
+      },
+      {
+        destination: '55 Mill St, Toronto, ON M5A 3C4',
+        label: 'Distillery District',
+        mode: 'bicycling'
+      },
+      {
+        destination: '6301 Silver Dart Dr, Mississauga, ON L5P 1B2',
+        label: 'Pearson Airport',
+        avoid: 'tolls'
+      }
+    ]
+  }
+},
+
+/// Stock API
+{
+  module: "MMM-AVStock",
+  position: "bottom_right", //"bottom_bar" is better for `mode:ticker`
+  config: {
+    apiKey : "T5OCQD1GSI4BX98S", // https://www.alphavantage.co/
+    timeFormat: "YYYY-MM-DD HH:mm:ss",
+    symbols : ["aapl", "GOOGL", "TSLA", "amzn", "FB"],
+    alias: ["APPLE", "GOOGLE", "TESLA", "AMAZON","FACEBOOK"], //Easy name of each symbol. When you use `alias`, the number of symbols and alias should be the same. If value is null or "", symbol string will be used by default.
+    tickerDuration: 60, // Ticker will be cycled once per this second.
+    chartDays: 90, //For `mode:series`, how much daily data will be taken. (max. 90)
+    poolInterval : 1000*15, // (Changed in ver 1.1.0) - Only For Premium Account
+    mode : "table", // "table", "ticker", "series"
+    decimals: 4, // number o decimals for all values including decimals (prices, price changes, change%...)
+    candleSticks : false, //show candle sticks if mode is Series
+    coloredCandles : false, //colored bars: red and green for negative and positive candles
+    premiumAccount: false, // To change poolInterval, set this to true - Only For Premium Account
+  }
+},
+
+/// Sports Update
+{
+  module: "MMM-MyScoreboard",
+  position: "bottom_left",
+  classes: "default everyone",
+  header: "My Scoreboard",
+  config: {
+    showLeagueSeparators: true,
+    colored: true,
+    viewStyle: "mediumLogos",
+    sports: [
+      {
+        league: "NHL",
+        groups: ["Atlantic"]
+      },
+      {
+        league: "NBA",
+        teams: ["TOR"],
+        groups: ["Pacific", "Central"]
+      },
+      {
+        league: "MLB",
+        teams: ["TOR", "CHW", "NYY"]
+      },
+      {
+        league: "NFL",
+        teams: ["BUF", "NYJ", "NYG"]
+      },
+      {
+        league: "CFL",
+        teams: ["TOR", "MTL", "OTT"]
+      },
+      {
+        league: "NCAAM_MM",
+        label: "March Madness"
+      }
+    ]
+
+  }
+},
+
+// Bible Verse
+{
+		module: 'MMM-DailyBibleVerse',
+		position: 'bottom_bar',	// This can be any of the regions. Best result is in the bottom_bar as verses can take multiple lines in a day.
+		config: {
+			version: 'ESV', // This can be changed to any version you want that is offered by Bible Gateway. For a list, go here: https://www.biblegateway.com/versions/,
+	    	size: 'small' // default value is medium, but can be changed. 
+		}
+	},
+
+// Weekly Schedule
+{
+    module: "MMM-WeeklySchedule",
+    position: "top_left",
+    header: "Gwendolyn's classes",
+    config: {
+        schedule: {
+            timeslots: [ "8:00", "10:00", "12:00", "14:00", "16:00" ],
+            lessons: {
+                mon: [ "Potions", "Defense against the Dark Arts", "Lunch Break", "Transfiguration" ],  
+                tue: [ "", "Astronomy", "Lunch Break", "Charms", "History of Magic" ],
+                wed: [ "Arithmancy", "Divination", "Lunch Break", "Muggle Studies", "Herbology" ],
+                thu: [ "Care of Magical Creatures", "Care of Magical Creatures", "Lunch Break", "Transfiguration", "Charms" ],
+                fri: [ "Potions", "Herbology", "Lunch Break", "Charms", "Defense against the Dark Arts" ],
+                // no entries for saturday
+                sun: [ "", "Quidditch Match", "Sunday Lunch" ]   // short day on sundays
+            }
+        },
+        updateInterval: 1 * 60 * 60 * 1000, // every hour
+        showNextDayAfter: "16:00"
+    }
+},		
 /// Alexa Control	
    {
         module: 'MMM-AlexaControl',
         position: 'middle_center',
         config:{
-        		pages:3,
+        		pages:4,
             image: false,
             pm2ProcessName: "mm",
             vcgencmd: true
@@ -157,11 +288,19 @@ var config = {
         module: 'MMM-pages',
         config: {
         		 
-        		 modules:[[ "weatherforecast", "newsfeed"],[ "calendar", "MMM-NowPlayingOnSpotify" ]],
+        		 modules:[[ "weatherforecast", "newsfeed"],[ "calendar", "MMM-NowPlayingOnSpotify","MMM-MyScoreboard"],
+        		 ["MMM-MyCommute","MMM-AVStock" ],["MMM-DailyBibleVerse","MMM-WeeklySchedule"]],
              fixed: ["clock", "currentweather", "MMM-page-indicator"],
         			 
         		 devices: {
-    						devices: [{
+    						devices: [
+							{	
+        					name: 'Page 1',  
+        					port: 11101,              
+        					handler: `_this.sendSocketNotification("PAGE_CHANGED", 0)`
+    						},     						
+    						
+    						{
     							
         					name: 'Page 2',  
         					port: 11102,              
@@ -172,6 +311,13 @@ var config = {
         					name: 'Page 3',  
         					port: 11103,              
         					handler: `_this.sendSocketNotification("PAGE_CHANGED", 2)`
+    						},	  
+    						
+    						
+    						{
+        					name: 'Page 4',  
+        					port: 11104,              
+        					handler: `_this.sendSocketNotification("PAGE_CHANGED", 3)`
     						}	  
 							]}
         			         			 
