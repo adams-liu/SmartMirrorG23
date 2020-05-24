@@ -1,0 +1,1 @@
+//note the config file was removed because some api keys were in them. Adams has the full list 
