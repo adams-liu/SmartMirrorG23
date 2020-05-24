@@ -14,9 +14,9 @@ This project uses an amazon echo to communicate with the Raspberry Pi to create 
  > *This section is currently still being finished*
 
 ## Team :necktie:
-**Adams Liu** : Alexa Voice Integration
-**Ian Chang**: Hardware and Frame
-**Kingsley Chu**: User Interface
+- **Adams Liu** : Alexa Voice Integration
+- **Ian Chang**: Hardware and Frame
+- **Kingsley Chu**: User Interface
 
  
 
